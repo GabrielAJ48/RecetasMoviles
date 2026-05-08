@@ -7,6 +7,7 @@ import androidx.compose.ui.text.googlefonts.GoogleFont
 import com.example.ra2recetascocinaandrei.R
 
 object Fuentes {
+
     private val provider = GoogleFont.Provider(
         providerAuthority = "com.google.android.gms.fonts",
         providerPackage = "com.google.android.gms",

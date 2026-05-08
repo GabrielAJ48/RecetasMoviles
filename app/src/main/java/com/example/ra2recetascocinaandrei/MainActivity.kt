@@ -12,8 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.ra2recetascocinaandrei.pantallas.MostrarRecetas
+import com.example.ra2recetascocinaandrei.viewmodel.ListaRecetasViewModel
+import com.example.ra2recetascocinaandrei.pantallas.ListaRecetas
 import com.example.ra2recetascocinaandrei.ui.theme.RA2RecetasCocinaAndreiTheme
+import com.example.ra2recetascocinaandrei.navegacion.NavigationController
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -22,7 +24,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RA2RecetasCocinaAndreiTheme {
-                MostrarRecetas()
+                NavigationController()
                 }
             }
         }
@@ -34,6 +36,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     RA2RecetasCocinaAndreiTheme {
-       MostrarRecetas()
+
     }
 }
