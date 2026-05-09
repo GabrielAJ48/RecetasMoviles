@@ -7,8 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.ra2recetascocinaandrei.pantallas.ListaRecetas // Añade este import
+import com.example.ra2recetascocinaandrei.vistas.ListaRecetas // Añade este import
 import com.example.ra2recetascocinaandrei.viewmodel.ListaRecetasViewModel
+import com.example.ra2recetascocinaandrei.vistas.DetalleReceta
 
 @Composable
 fun NavigationController() {
@@ -21,8 +22,8 @@ fun NavigationController() {
         composable(route = Screen.ListaRecetas.route) {
             ListaRecetas(
                 viewModel = listaRecetasViewModel,
-                onRecetaClick = { idQueHanTocado ->
-                    navController.navigate(Screen.DetalleReceta.createRoute(idQueHanTocado))
+                onRecetaClick = { recetaClickada ->
+                    navController.navigate(Screen.DetalleReceta.createRoute(recetaClickada))
                 }
             )
         }
@@ -33,7 +34,11 @@ fun NavigationController() {
                 navArgument("recetaId") { type = NavType.IntType }
             )
         ) { backStackEntry ->
-            val recetaId = backStackEntry.arguments?.getInt("recetaId") ?: 0
+            val id = backStackEntry.arguments?.getInt("recetaId") ?: 0
+            val receta = listaRecetasViewModel.obtenerRecetaPorId(id)
+            if (receta != null)
+                DetalleReceta(navController, receta)
         }
+
     }
 }

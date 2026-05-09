@@ -1,4 +1,4 @@
-package com.example.ra2recetascocinaandrei.datos
+package com.example.ra2recetascocinaandrei.modelo
 
 data class Receta(
     val id: Int,
