@@ -146,7 +146,7 @@ class ListaRecetasViewModel : ViewModel(){
     val recetas: StateFlow<List<Receta>> = _recetas.asStateFlow()
 
     fun obtenerRecetaPorId(recetaId: Int): Receta? {
-        return recetasPrueba.find { receta -> receta.id == recetaId }
+        return recetasPrueba.find { it.id == recetaId }
     }
 
     fun filtrarPorCategoria(categoria: Categoria) {

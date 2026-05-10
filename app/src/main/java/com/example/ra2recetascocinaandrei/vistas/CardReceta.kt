@@ -4,7 +4,6 @@ import android.R
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ra2recetascocinaandrei.modelo.Receta
 import com.example.ra2recetascocinaandrei.fuentes.Fuentes
-
 
 @Composable
 fun TarjetaRecetas(receta: Receta, onClick: () -> Unit) {
@@ -100,18 +98,21 @@ fun TarjetaRecetas(receta: Receta, onClick: () -> Unit) {
         }
     }
 }
+
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun TarjetaReceta() {
+fun TarjetaRecetaPreview() {
     Card(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(16.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             Image(
                 painter = painterResource(id = R.drawable.ic_menu_edit),
-                contentDescription = "Imagen de receta}",
+                contentDescription = "Imagen de receta",
                 modifier = Modifier.size(80.dp),
                 contentScale = ContentScale.Crop
             )
@@ -120,16 +121,20 @@ fun TarjetaReceta() {
 
             Column {
                 Text(
-                    text = "receta",
+                    text = "Receta de prueba",
                     fontWeight = FontWeight.Bold,
                     fontFamily = Fuentes.Poppins,
-                    fontSize = 18.sp
+                    fontSize = 18.sp,
+                    color = Color(0xFF954A05)
                 )
-                Text(text = "Dificultad: 1", fontFamily = Fuentes.Poppins)
-                Text(text = "Tiempo: 50 mins", fontFamily = Fuentes.Poppins)
-                Text(text = "Categoría: Mexicano", fontFamily = Fuentes.Poppins, color = androidx.compose.ui.graphics.Color.Gray)
+                Text(text = "Dificultad: Media", fontFamily = Fuentes.Poppins, color = Color.DarkGray)
+                Text(text = "Tiempo: 50 mins", fontFamily = Fuentes.Poppins, color = Color.DarkGray)
+                Text(
+                    text = "Categoría: Mexicano",
+                    fontFamily = Fuentes.Poppins,
+                    color = Color.Gray
+                )
             }
         }
     }
 }
-
