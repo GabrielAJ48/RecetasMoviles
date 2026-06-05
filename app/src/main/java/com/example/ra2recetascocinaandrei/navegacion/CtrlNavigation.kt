@@ -7,7 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.ra2recetascocinaandrei.vistas.ListaRecetas // Añade este import
+import com.example.ra2recetascocinaandrei.vistas.ListaRecetas
+import com.example.ra2recetascocinaandrei.vistas.Login
 import com.example.ra2recetascocinaandrei.viewmodel.ListaRecetasViewModel
 import com.example.ra2recetascocinaandrei.vistas.DetalleReceta
 
@@ -17,7 +18,15 @@ fun NavigationController() {
 
     val listaRecetasViewModel: ListaRecetasViewModel = viewModel()
 
-    NavHost(navController = navController, startDestination = Screen.ListaRecetas.route) {
+    NavHost(navController = navController, startDestination = Screen.Login.route) {
+
+        composable (route = Screen.Login.route) {
+            Login (
+                onLoginCorrecto = {
+                    navController.navigate(Screen.ListaRecetas.route)
+                }
+            )
+        }
 
         composable(route = Screen.ListaRecetas.route) {
             ListaRecetas(
